@@ -29,10 +29,16 @@ values."
      ;; git
      markdown
      html
-     clojure
      erlang
      elixir
      org
+     (auto-completion :variables
+                      auto-completion-return-key-behavior 'behavior
+                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-complete-with-key-sequence nil
+                      auto-completion-complete-with-key-sequence-delay 0.1
+                      auto-completion-private-snippets-directory nil
+      )
      (colors :variables
              colors-enable-rainbow-identifiers t
              colors-enable-nyan-cat-progress-bar t)
@@ -47,7 +53,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ox-ioslide makey)
+   dotspacemacs-additional-packages '(ox-ioslide makey org-ac)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -257,9 +263,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
-  (set-face-attribute 'default nil :family "Source Code Pro")
-  (set-face-attribute 'default nil :height 105)
-  )
-
+  (set-face-attribute 'default nil :height 100)
+  (org-ac/config-default)
+)
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
